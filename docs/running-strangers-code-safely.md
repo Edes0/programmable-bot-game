@@ -4,7 +4,8 @@
 
 Every second, my server runs code written by players it has never met. Each bot runs sealed off on its
 own, with hard limits, answers in a few milliseconds, and is sent only what its player is allowed to
-see. A bot that crashes or misbehaves loses its own turn, never the game.
+see. A bot that crashes or misbehaves loses its own turn, never the game, and one player's private
+data is never sent to another.
 
 - **3 languages running today, 24 prepared** — Python, JavaScript and TypeScript run now; the other
   21 are packaged and one step from running.
