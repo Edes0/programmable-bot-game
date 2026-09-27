@@ -78,27 +78,10 @@ computed for; there is no background queue and no drain-results-next-tick.
 The tick is twelve `ITickPhase` implementations running in a fixed sequence over a shared
 `TickPipelineState`. A phase returning `Halt` stops the pipeline and must have set the result.
 
-```csharp
-// src/BotGame.Infrastructure/Services/Tick/Pipeline/ITickPhase.cs
-public interface ITickPhase
-{
-    /// <summary>
-    /// True on the first phase whose per-action command-handler saves must be deferred into the
-    /// single end-of-tick flush. The orchestrator opens a mutation batch on reaching this phase and
-    /// holds it open through the rest of the pipeline, so handler SaveChanges calls stage rather
-    /// than flush mid-tick — keeping the change-tracker set intact for the phases that overlay it
-    /// (hatchery regen, visibility). Phases before it (first-run spawn) still flush immediately, so
-    /// their writes are visible to the same tick's DB reads (player resolution).
-    /// </summary>
-    bool BeginsMutationBatch => false;
-
-    Task<TickPhaseOutcome> ExecuteAsync(TickPipelineState state, CancellationToken cancellationToken);
-}
-```
-
-That one flag is the whole persistence strategy. Before it, writes flush immediately because a later
-phase in the same tick reads them back. From it onward, every handler's `SaveChanges` stages into one
-batch that flushes once — a tick is one database round-trip, not one per action.
+One flag on the interface, `BeginsMutationBatch`, is the whole persistence strategy. Before the first
+phase that sets it, writes flush immediately, because a later phase in the same tick reads them back.
+From it onward, every handler's `SaveChanges` stages into one batch that flushes once — a tick is one
+database round-trip, not one per action.
 
 The order lives in DI registration, spelled out rather than resolved, with the reasons attached:
 
@@ -239,38 +222,8 @@ that mask the fog fills the half-space below the slab in every direction.
 
 **The atlas.** The visibility texture is one square atlas of (2R+1)² room regions, laid out so that
 atlas adjacency mirrors world adjacency — one atlas-wide distance-field pass and bilinear soft borders
-then flow across room seams. Addressing it takes the same mapping in two languages. The C# side is
-pure, with no `UnityEngine` dependency, so it is unit-testable in EditMode:
-
-```csharp
-// frontend/botgame/Assets/Scripts/World/FoWAtlas.cs
-public static class FoWAtlas
-{
-    /// <summary>Atlas square dimension in cells: (2·radius+1)·gridSize. Radius 0 ⇒ gridSize.</summary>
-    public static int AtlasDim(int gridSize, int radius) => (2 * radius + 1) * gridSize;
-
-    /// <summary>
-    /// Maps a room's grid coords to its atlas block (col = roomX+radius, row = roomY+radius).
-    /// Returns false when the room is outside the configured radius — the caller's bounds guard
-    /// against a backend grid wider than the client's.
-    /// </summary>
-    public static bool TryRoomColRow(int roomX, int roomY, int radius, out int col, out int row)
-    {
-        col = roomX + radius;
-        row = roomY + radius;
-        return roomX >= -radius && roomX <= radius && roomY >= -radius && roomY <= radius;
-    }
-
-    /// <summary>
-    /// Row-major flat index for cell (x,z) of the room block at atlas (col,row). At radius 0
-    /// this reduces to z·gridSize + x — the pre-atlas single-room index (byte-identity).
-    /// </summary>
-    public static int CellOffset(int col, int row, int x, int z, int gridSize, int atlasDim)
-        => (row * gridSize + z) * atlasDim + (col * gridSize + x);
-}
-```
-
-And the shader mirror:
+then flow across room seams. Addressing it takes the same mapping in two languages: a pure C# class
+with no `UnityEngine` dependency, unit-testable in EditMode, and its shader mirror:
 
 ```hlsl
 // frontend/botgame/Assets/Shaders/Includes/FogOfWar.hlsl
@@ -304,16 +257,8 @@ rooms changed.
 value objects, 11 domain events, domain services, and a `Result`-based error model rather than
 exceptions for rule violations.
 
-| Aggregate roots | |
-|---|---|
-| `WorldAggregate`, `RoomAggregate` | The world and its internal grid partition |
-| `UnitAggregate`, `StructureAggregate` | The things in it |
-| `PlayerAggregate`, `UserAggregate` | Who owns them |
-| `PlayerMemoryAggregate` | The player's opaque per-tick blob |
-| `CpuBucketAggregate` | The CPU budget |
-| `PlayerVisibilityAggregate`, `PlayerLastSeenMemoryAggregate` | What each player currently sees, and what they remember seeing |
-
-*Visible now* and *last seen* are two aggregates because they are different facts with different
+*Visible now* and *last seen* are two aggregates (`PlayerVisibilityAggregate` and
+`PlayerLastSeenMemoryAggregate`) because they are different facts with different
 lifetimes: a structure you saw ten ticks ago is remembered, and a hostile unit is visible-only — it
 drops out the moment it is fogged and is never remembered. "Can this player read this?" is a
 structural question, not a runtime one. CQRS is present but unremarkable: about 30 MediatR handlers
@@ -324,15 +269,8 @@ reasoning lives in the type:
 
 ```csharp
 // src/BotGame.Domain/GameWorld/ValueObjects/WorldPosition.cs
-/// <summary>
-/// A <c>readonly record struct</c>: value semantics, no per-instance heap allocation on the
-/// move-prep hot path. Structural equality (X, Y, Z) is identical to the former record class;
-/// "absent" positions are modelled as <c>WorldPosition?</c>.
-/// </summary>
 public readonly record struct WorldPosition
 {
-    public float X { get; init; }
-
     /// <summary>
     /// Y coordinate. <b>VISUALIZATION-ONLY — domain code MUST NOT read this field for gameplay
     /// logic.</b> Every gameplay distance check uses <see cref="HorizontalDistanceTo"/> (X/Z only);
@@ -343,8 +281,6 @@ public readonly record struct WorldPosition
     /// vertical gameplay layer.
     /// </summary>
     public float Y { get; init; }
-
-    public float Z { get; init; }
     // …
 }
 ```

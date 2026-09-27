@@ -8,7 +8,8 @@ see. A bot that crashes or misbehaves loses its own turn, never the game.
 
 - **3 languages running today, 24 prepared** — Python, JavaScript and TypeScript run now; the other
   21 are packaged and one step from running.
-- **Hard limits on every run** — cut off after 200 ms, with capped memory and output.
+- **The same limits in every language** — cut off after 200 ms, with capped memory and output, so no
+  language has an edge; unused time is banked, which rewards efficient code.
 - **Bots stay loaded** — each answers in 1–5 ms, down from 50–100 ms.
 - **Nothing private leaks** — tests check exactly what each player receives, not what the screen
   shows.
@@ -88,6 +89,11 @@ Adding a language means: an image, a runtime descriptor, a command builder, an e
 and a `/opt/botgame/worker` launcher inside the image. It does not mean touching the tick.
 
 ## The limits
+
+The limits do two jobs. They keep the cost of a tick predictable as the number of players grows, and
+they are part of the game: every language gets the same budget, so the choice of language is not an
+advantage, and banked CPU rewards a player whose colony code gets more efficient as it gets more
+complex.
 
 Canonical, and enforced per execution:
 
