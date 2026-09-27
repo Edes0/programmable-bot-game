@@ -8,8 +8,9 @@ see. A bot that crashes or misbehaves loses its own turn, never the game.
 
 - **3 languages running today, 24 prepared** — Python, JavaScript and TypeScript run now; the other
   21 are packaged and one step from running.
-- **The same limits in every language** — cut off after 200 ms, with capped memory and output, so no
-  language has an edge; unused time is banked, which rewards efficient code.
+- **Every language plays by the same rules** — each bot is cut off after 200 ms and gets a fixed amount
+  of memory, so no language has an edge; time it doesn't use is saved for later, rewarding efficient
+  code.
 - **Bots stay loaded** — each answers in 1–5 ms, down from 50–100 ms.
 - **Nothing private leaks** — tests check exactly what each player receives, not what the screen
   shows.
