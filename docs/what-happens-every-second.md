@@ -4,14 +4,14 @@
 
 Once a second, the server collects every bot's orders, settles every conflict in a fixed order, saves
 the world in one write, and sends each player only their own view of it. The same inputs always
-produce the same world, and tests replay it to prove it. Benchmarks measure every part.
+produce the same world, and tests run it twice to prove it. Speed tests measure every part.
 
 - **Twelve steps, always in the same order** — run every bot, apply its orders, update the world,
   work out what each player can see, save once — inside a 1,000 ms budget.
-- **Same inputs, same world** — replay tests check that two runs come out byte-identical.
+- **Same inputs, same world** — tests run the same second twice and check the results match exactly.
 - **Players only see what their units see** — hidden enemy units are never sent.
-- **Measured, not guessed** — when a rewrite made planning unit moves 13× slower at 5,000 units,
-  benchmarks caught it, and it was brought back from 2,821 ms to 1,409 ms.
+- **Measured, not guessed** — when a rewrite made planning unit moves 13× slower at 5,000 units, the
+  speed tests caught it, and it was brought back from 2,821 ms to 1,409 ms.
 
 ---
 

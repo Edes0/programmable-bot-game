@@ -2,12 +2,13 @@
 
 ![Diagram: each player's bot runs in its own sealed container with a 200 ms cut-off, 256 MiB of memory and 1 MiB of output; once a second the game server sends each bot its view and collects its orders; a crashed bot loses only its own turn](../media/diagram-sandbox.svg)
 
-Every second, my server runs code written by players it has never met. Each bot runs sealed in its own
-container with hard limits, answers in a few milliseconds, and is sent only what its player is allowed
-to see. A bot that crashes or misbehaves loses its own turn, never the game.
+Every second, my server runs code written by players it has never met. Each bot runs sealed off on its
+own, with hard limits, answers in a few milliseconds, and is sent only what its player is allowed to
+see. A bot that crashes or misbehaves loses its own turn, never the game.
 
-- **Built for 24 languages** — 75 Docker images; Python, JavaScript and TypeScript run live today.
-- **Hard limits on every run** — cut off at 200 ms, 256 MiB of memory, 1 MiB of output.
+- **3 languages running today, 24 prepared** — Python, JavaScript and TypeScript run now; the other
+  21 are packaged and one step from running.
+- **Hard limits on every run** — cut off after 200 ms, with capped memory and output.
 - **Bots stay loaded** — each answers in 1–5 ms, down from 50–100 ms.
 - **Nothing private leaks** — tests check exactly what each player receives, not what the screen
   shows.

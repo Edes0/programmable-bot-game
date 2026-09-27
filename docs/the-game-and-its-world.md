@@ -3,13 +3,15 @@
 ![A black many-legged creature walking across sand, its legs placed procedurally](../media/evo-clip-locomotion.gif)
 
 A 3D world where every player's colony — its base and its creatures — lives, and where you can watch
-the players' bots steer them. The client holds no game rules; it draws what the server sends. So I
-could try four game engines to find the look, and a new look could even be built by someone else.
+the players' bots steer them. The app you watch it in holds no game rules; it only draws what the
+game server sends. So I could rebuild that app four times to find the look, and a new look could even
+be built by someone else.
 
 - **One seamless world** — generated as one landscape, with no visible seams.
 - **Creatures whose legs are placed by code** as they walk.
 - **Watch from a browser**, with nothing to install.
-- **Four engines tried**, November 2025 to February 2026; Unity 3D kept.
+- **Built with four different game tools**, November 2025 to February 2026, before settling on Unity
+  3D.
 
 ---
 
