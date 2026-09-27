@@ -7,7 +7,7 @@ run live today.
 
 Designed and built solo over ~10 months by Andreas Sjögren. I make every design decision and review every change; AI coding agents write code under checks I set up.
 
-Backend .NET engineer. A write-up of a private project; no buildable source ([why](#why-there-is-no-source-here)).
+Backend .NET engineer. A write-up of my ongoing passion project, which I intend to finish; no buildable source ([why](#why-there-is-no-source-here)).
 
 ![The world as a bot sees it: eroded terrain, a fog-of-war clearing around the colony, a hatchery, and a procedurally-legged drone](media/04-tuned.png)
 
