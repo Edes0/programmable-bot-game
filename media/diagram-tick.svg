@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-labelledby="t d">
+  <title id="t">What happens every second</title>
+  <desc id="d">Once a second: every bot's orders are collected, settled in one fixed order, saved in one write, and sent to each player as their own view of the world. The same inputs always produce the same world.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4de2c0"/>
+    </marker>
+  </defs>
+  <rect width="960" height="300" rx="14" fill="#0b1512"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="480" y="36" fill="#8fbfb3" font-size="14" text-anchor="middle">once a second · same inputs, same world</text>
+
+    <rect x="30" y="80" width="190" height="130" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
+    <text x="125" y="128" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">Every bot's</text>
+    <text x="125" y="152" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">orders</text>
+    <text x="125" y="184" fill="#8fbfb3" font-size="14" text-anchor="middle">collected in parallel</text>
+
+    <rect x="265" y="80" width="190" height="130" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
+    <text x="360" y="128" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">One fixed</text>
+    <text x="360" y="152" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">order</text>
+    <text x="360" y="184" fill="#8fbfb3" font-size="14" text-anchor="middle">every conflict settled</text>
+
+    <rect x="500" y="80" width="190" height="130" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
+    <text x="595" y="128" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">One write</text>
+    <text x="595" y="152" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">to the database</text>
+    <text x="595" y="184" fill="#8fbfb3" font-size="14" text-anchor="middle">the world, saved once</text>
+
+    <rect x="735" y="80" width="195" height="130" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2.5"/>
+    <text x="832" y="128" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">Each player's</text>
+    <text x="832" y="152" fill="#dff" font-size="19" font-weight="600" text-anchor="middle">own view</text>
+    <text x="832" y="184" fill="#8fbfb3" font-size="14" text-anchor="middle">hidden units never sent</text>
+
+    <path d="M222,145 L261,145" stroke="#4de2c0" stroke-width="2" marker-end="url(#a)"/>
+    <path d="M457,145 L496,145" stroke="#4de2c0" stroke-width="2" marker-end="url(#a)"/>
+    <path d="M692,145 L731,145" stroke="#4de2c0" stroke-width="2" marker-end="url(#a)"/>
+
+    <text x="480" y="258" fill="#8fbfb3" font-size="14" text-anchor="middle">twelve steps, always in the same order, inside a 1,000 ms budget</text>
+  </g>
+</svg>

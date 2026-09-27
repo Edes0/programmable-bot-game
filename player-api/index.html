@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Screeps2 — Player API</title>
+<title>Programmable bot game — Player API</title>
 <style>
   :root {
     --bg: #070b10;
@@ -167,14 +167,14 @@
 </head>
 <body>
 <div style="background:#0d1520;border-bottom:1px solid #1d2b39;padding:11px 20px;font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:#9fb3c8;text-align:center">
-  Reference documentation for <b style="color:#4de2c0">Screeps2</b> &mdash; a private project by Andreas Sj&ouml;gren.
+  Reference documentation for <b style="color:#4de2c0">a programmable bot game</b> &mdash; a private project by Andreas Sj&ouml;gren.
   Written for bot authors: a public API kept small on purpose.
-  <a href="https://github.com/Edes0/polyglot-tick-engine" style="color:#4de2c0;text-decoration:none;border-bottom:1px solid rgba(77,226,192,.4)">The reasoning is in the write-up &rarr;</a>
+  <a href="https://github.com/Edes0/programmable-bot-game" style="color:#4de2c0;text-decoration:none;border-bottom:1px solid rgba(77,226,192,.4)">The reasoning is in the write-up &rarr;</a>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <p class="kicker">Screeps2 · Player API</p>
+    <p class="kicker">Programmable bot game · Player API</p>
     <h1>Write one bot.<br>Watch it live forever.</h1>
     <p class="lede">You write a single function. The world calls it once per tick, on every creature you own, for as long as your colony survives. This is the reference for <em>what your bot can see and do</em> — the rest is yours to write.</p>
   </div>
@@ -726,7 +726,7 @@ module.exports = { play };</code></pre>
   <div class="wrap">
     <h2>Where this comes from</h2>
     <p>This page describes the <b>runtime object surface</b> as it actually exists: every field and method is checked against the in-container worker entrypoints — the objects a Python or JavaScript bot actually touches — and the HTTP table against the player API controller. It is hand-written for people who write bots, not generated.</p>
-    <p style="margin-top:22px">Why the surface is this small, and what was deliberately left out, is argued in the <a href="https://github.com/Edes0/polyglot-tick-engine/blob/main/docs/07-domain-model.md#the-api-design-line" style="color:#4de2c0">engineering write-up</a>.</p>
+    <p style="margin-top:22px">Why the surface is this small, and what was deliberately left out, is argued in the <a href="https://github.com/Edes0/programmable-bot-game/blob/main/docs/what-happens-every-second.md#the-api-design-line" style="color:#4de2c0">engineering write-up</a>.</p>
   </div>
 </footer>
 
