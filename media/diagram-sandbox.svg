@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="t d">
+  <title id="t">Running strangers' code safely</title>
+  <desc id="d">Each player's bot runs in its own sealed container with a 200 ms cut-off, 256 MiB of memory and 1 MiB of output. Once a second the game server sends each bot its view and collects its orders. A bot that fails loses only its own turn.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4de2c0"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e2704d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="400" rx="14" fill="#0b1512"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+
+    <!-- containers -->
+    <g>
+      <rect x="40" y="46" width="384" height="86" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
+      <text x="62" y="80" fill="#dff" font-size="19" font-weight="600">Player A's bot · Python</text>
+      <text x="62" y="110" fill="#8fbfb3" font-size="15">sealed container · 200 ms · 256 MiB · 1 MiB out</text>
+
+      <rect x="40" y="157" width="384" height="86" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
+      <text x="62" y="191" fill="#dff" font-size="19" font-weight="600">Player B's bot · TypeScript</text>
+      <text x="62" y="221" fill="#8fbfb3" font-size="15">sealed container · 200 ms · 256 MiB · 1 MiB out</text>
+
+      <rect x="40" y="268" width="384" height="86" rx="10" fill="#1d1512" stroke="#e2704d" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="62" y="302" fill="#f3d6cc" font-size="19" font-weight="600">Player C's bot · crashed</text>
+      <text x="62" y="332" fill="#c79a8c" font-size="15">loses this turn; nobody else does</text>
+    </g>
+
+    <!-- server -->
+    <rect x="640" y="120" width="280" height="160" rx="12" fill="#0f2a24" stroke="#4de2c0" stroke-width="2.5"/>
+    <text x="780" y="180" fill="#dff" font-size="23" font-weight="700" text-anchor="middle">Game server</text>
+    <text x="780" y="212" fill="#8fbfb3" font-size="15" text-anchor="middle">once a second:</text>
+    <text x="780" y="236" fill="#8fbfb3" font-size="15" text-anchor="middle">send each bot its view,</text>
+    <text x="780" y="258" fill="#8fbfb3" font-size="15" text-anchor="middle">collect its orders</text>
+
+    <!-- arrows A -->
+    <path d="M636,160 C560,160 520,78 430,78" fill="none" stroke="#4de2c0" stroke-width="2" marker-end="url(#a)"/>
+    <path d="M430,100 C520,100 560,176 636,176" fill="none" stroke="#4de2c0" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round" marker-end="url(#a)"/>
+    <!-- arrows B -->
+    <path d="M636,194 L430,194" fill="none" stroke="#4de2c0" stroke-width="2" marker-end="url(#a)"/>
+    <path d="M430,214 L636,214" fill="none" stroke="#4de2c0" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round" marker-end="url(#a)"/>
+    <!-- arrow C: sent, no reply -->
+    <path d="M636,240 C560,240 520,304 430,304" fill="none" stroke="#e2704d" stroke-width="2" marker-end="url(#r)"/>
+
+    <!-- legend -->
+    <line x1="460" y1="356" x2="500" y2="356" stroke="#4de2c0" stroke-width="2"/>
+    <text x="510" y="361" fill="#8fbfb3" font-size="14">its view of the world</text>
+    <line x1="680" y1="356" x2="720" y2="356" stroke="#4de2c0" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/>
+    <text x="730" y="361" fill="#8fbfb3" font-size="14">its orders</text>
+    <text x="480" y="30" fill="#8fbfb3" font-size="14" text-anchor="middle">built for 24 languages · 3 live today</text>
+  </g>
+</svg>

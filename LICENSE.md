@@ -19,8 +19,8 @@ a working system, and are **not licensed for reuse** in any form.
 
 ## The underlying project
 
-The Screeps2 source code is private and is not licensed, distributed, or offered under any open
-source terms. Nothing in this repository grants any right to it.
+The source code of the underlying project is private and is not licensed, distributed, or offered
+under any open source terms. Nothing in this repository grants any right to it.
 
 ## Third-party material
 
