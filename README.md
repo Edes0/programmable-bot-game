@@ -18,15 +18,15 @@ I have designed and built it solo since November 2025: the server, the sandbox t
 
 ## Milestones
 
-- **2025-11** — A server that runs players' bots inside itself, drawn by a first Godot client on a hexagonal map. It lasted six days: I wanted C# on both sides, so the client moved to Unity.
+- **2025-11** — A server that runs players' bots inside itself, drawn by a first Godot client on a hexagonal map. Every rule stayed on the server, so the client was the cheap part to swap, and after six days I tried Unity.
 - **2025-11** — A Unity 2D client on the live server, its hexagons spread across 49 files. All 49 went with the next client, which taught me to keep the map's shape out of the code around it.
-- **2025-12** — An Unreal client filling the world with procedural forests and rock. It was too much engine for one person learning to make a first game, and it could not build for the browser.
+- **2025-12** — An Unreal client filling the world with procedural forests and rock. With no game logic in the client, trying another engine cost weeks of drawing, not the game.
 - **2026-02** — A Unity 3D client, and every bot moved out of the server into its own Docker container. Isolation the operating system gives beats isolation I maintain myself.
 - **2026-03** — The first speed tests, and a registry that keeps each player's runtime ready. Measuring before tuning showed where the time really went.
 - **2026-05** — Bots kept loaded between ticks, every second waiting for every bot, and the fog of war. Calling bots without waiting for them had made the world differ from run to run, so I reversed it.
 - **2026-06** — Each player sent only the changes in their own view, cut on the server. Hiding something in the client is decoration, not protection.
 - **2026-07** — A pathfinding rewrite for one seamless world, which made planning moves 13 times slower; speed tests caught it and halved it. A green test suite is not evidence about speed.
-- **2026-10** — Godot back as the only client, with Unity archived. Two live clients meant doing every change twice, so the first engine I tried was the right one after all.
+- **2026-10** — Godot back as the only client, with Unity archived. With every rule on the server and the look written down in an art bible, AI agents rebuild a client from scratch cheaply, so I chose the engine by trying it.
 - **2026-11** — A playtest build that installs on a clean machine, with Python bots running end to end. A feature is not shipped until a stranger can start it.
 
 ## By the numbers

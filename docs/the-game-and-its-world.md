@@ -15,7 +15,7 @@ The hard part: one seamless world worth watching, drawn by a client that shows o
 - **One seamless world**, generated as one landscape, with no seams where its rooms meet.
 - **Biomes with their own rock and light**: the glass desert, the canyon, the highland and more.
 - **A night sky with weather**: every night rolls clear, drizzle, snow or a storm.
-- **Players watch their bots play** in the Godot client, which draws only what the server sends.
+- **No game logic in the client**: it draws only what the server sends, so a new client can be built in any engine.
 - **A fog of war**: a player sees what their units see, and the rest of the world stays dark.
 - **No browser view yet**: Godot cannot export C# to the web.
 
@@ -23,9 +23,9 @@ The hard part: one seamless world worth watching, drawn by a client that shows o
 
 ### Godot as the only client
 
-**Context:** I built the client five times to find the game's look, and for a while Unity and Godot ran side by side on the same stream, so every visual change was made twice or one of them rotted.
-**Decision:** Reversed: Godot, the first engine I tried and dropped after six days, came back as the only client in October 2026, and Unity is archived.
-**Consequence:** One client to change instead of two; the price is no browser view until a separate viewer is built, since Godot cannot export C# to the web.
+**Context:** Every rule lives on the server: the API, the bots' code, the database. The client only draws what it is sent, and with AI agents and a written art bible, a client can be built from scratch quickly.
+**Decision:** Reversed, on purpose: I tried Godot, Unity 2D, Unreal and Unity 3D as ways to show the same game, then came back to Godot as the only client in October 2026; Unity is archived.
+**Consequence:** The look was chosen by trying real clients, not by guessing; the price is no browser view yet, since Godot cannot export C# to the web.
 
 ### Terrain is a function of global coordinates
 
