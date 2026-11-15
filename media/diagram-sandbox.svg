@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="t d">
   <title id="t">Running strangers' code safely</title>
-  <desc id="d">Each player's bot runs in its own sealed container with 150 ms of CPU per tick, a 200 ms hard kill, 256 MiB of memory and 1 MiB of output. Once a second the game server sends each bot its view and collects its orders. A bot that fails loses only its own turn.</desc>
+  <desc id="d">Each player's bot runs in its own sealed container. Once a second the game server sends each bot its view and collects its orders. A bot that fails loses only its own turn.</desc>
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#4de2c0"/>
@@ -16,11 +16,11 @@
     <g>
       <rect x="40" y="46" width="384" height="86" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
       <text x="62" y="80" fill="#dff" font-size="19" font-weight="600">Player A's bot · Python</text>
-      <text x="62" y="110" fill="#8fbfb3" font-size="15">sealed container · 150 ms CPU · 256 MiB · 1 MiB out</text>
+      <text x="62" y="110" fill="#8fbfb3" font-size="15">sealed container · its own limits</text>
 
       <rect x="40" y="157" width="384" height="86" rx="10" fill="#0f2a24" stroke="#4de2c0" stroke-width="2"/>
       <text x="62" y="191" fill="#dff" font-size="19" font-weight="600">Player B's bot · Python</text>
-      <text x="62" y="221" fill="#8fbfb3" font-size="15">sealed container · 150 ms CPU · 256 MiB · 1 MiB out</text>
+      <text x="62" y="221" fill="#8fbfb3" font-size="15">sealed container · its own limits</text>
 
       <rect x="40" y="268" width="384" height="86" rx="10" fill="#1d1512" stroke="#e2704d" stroke-width="2" stroke-dasharray="7 5"/>
       <text x="62" y="302" fill="#f3d6cc" font-size="19" font-weight="600">Player C's bot · crashed</text>

@@ -11,7 +11,7 @@ or use it commercially.
 
 ## Code excerpts
 
-Every code excerpt in this repository — C#, HLSL, JSON payloads, and the HTML under `player-api/` —
+Every code excerpt in this repository — C# and HLSL —
 is © 2025–2026 Andreas Sjögren, **all rights reserved**.
 
 Excerpts are reproduced here to illustrate design decisions. They are deliberately partial, are not

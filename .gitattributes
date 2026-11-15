@@ -1,4 +1,2 @@
 # This repository is a documentation write-up, not a codebase.
-# The one HTML file is a published reference page, not project source.
-player-api/** linguist-documentation
 media/** linguist-vendored
